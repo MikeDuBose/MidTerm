@@ -68,7 +68,48 @@ namespace MidTerm
             return l;
         }
 
+        public static void EditMovie(Movie m)
+        {
+            Console.WriteLine("What would you like to edit? (1-4)");
+            Console.WriteLine("1\tTitle\n2\tActor\n3\tGenre\n4\tDirector\n");
+            string i = Console.ReadLine();
+            bool validated = int.TryParse(i, out int cheeky);
+
+            if (validated)
+            {
+                int sel = int.Parse(i);
+                if (sel == 1)
+                {
+                    Console.Write("\nPlease enter a new title for the movie: ");
+                    m.MovieName = Console.ReadLine();
+                }
+                else if (sel == 2)
+                {
+                    Console.Write("\nPlease enter a new actor or actress for the movie: ");
+                    m.MainActor = Console.ReadLine();
+                }
+                else if (sel == 3)
+                {
+                    Console.Write("\nPlease enter a new genre for the movie: ");
+                    m.Genre = Console.ReadLine();
+                }
+                else if (sel == 4)
+                {
+                    Console.Write("\nPlease enter a new director for the movie: ");
+                    m.Director = Console.ReadLine();
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid selection.  Please try again.\n\n");
+                EditMovie(m);
+            }
+
+            Program.PrintMenu();
+        }
+
     }
 
-    
+
 }

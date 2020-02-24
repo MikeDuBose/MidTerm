@@ -24,20 +24,6 @@ namespace MidTerm
 
         }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         public static Movie AddMovieHelper()
         {
             Console.WriteLine("Hello! In order to add a movie, I need a few pieces of information." +
@@ -57,7 +43,8 @@ namespace MidTerm
         {
             Console.WriteLine("Please select something to do:\n1\tAdd a movie\n2\tRemove a movie\n3\tSort\n4\tEdit a movie\nWhat would you like to select? (1-4)");
             bool validated = int.TryParse(Console.ReadLine(), out int input);
-            if(validated){
+            if (validated)
+            {
 
                 switch (input)
                 {
@@ -97,7 +84,49 @@ namespace MidTerm
                         Console.WriteLine("Your movies have been sorted!");
                         break;
                     case 4:
-                        //TODO:  Code a way to edit a movie based on title selection
+                        Console.WriteLine("Please enter the title of the movie you would like to edit.");
+                        string titSel = Console.ReadLine().ToLower();
+                        if (CheckTitle(titSel))
+                        {
+                            foreach (Movie m in ListMovies)
+                            {
+                                if (m.MovieName.ToLower() == titSel)
+                                {
+
+                                    Menu.EditMovie(m);
+                                }
+
+                                
+                            }
+                        }
+                        else
+                        {
+                            Console.WriteLine("Invalid title name");                           
+                        }
+
+
+
+
+
+
+                        //foreach (Movie m in ListMovies)
+                        //{                           
+                        //    if (m.MovieName.ToLower() == titSel)
+                        //    {
+                        //        flag = true;
+                        //        if (flag)
+                        //        {
+                        //            Menu.EditMovie(m);
+                        //        }
+                        //        else
+                        //        {
+                        //            Console.WriteLine("Invalid movie title.  Try again.");
+                        //            MenuDisplay();
+                        //        }
+                        //    }
+                        //}
+
+
                         break;
                     default:
                         Console.WriteLine("That was an invalid input.  Please try again.\n\n");
@@ -140,6 +169,24 @@ namespace MidTerm
                 return false;
             }
 
+        }
+
+        public static bool CheckTitle(string title)
+        {
+            string[] arrString = new string[ListMovies.Count];
+            for (int i = 0; i < ListMovies.Count; i++)
+            {
+                arrString[i] = ListMovies[i].MovieName;
+            }
+
+            for (int j = 0; j < arrString.Length; j++)
+            {
+                if (arrString[j].ToLower() == title.ToLower())
+                {
+                    return true;
+                }
+            }
+            return false;
         }
     }
 }

@@ -15,38 +15,28 @@ namespace MidTerm
             Menu.AddMovie(ListMovies, new Movie("Smash", "Applesauce", "Fantasy", "Simon J. Smith and Steve Hickner"));
             Movie z = new Movie("Zzz", "zzzz", "zzzz", "zzzzz");
             Menu.AddMovie(ListMovies, z);
-
-            //Console.WriteLine("Unsorted");
-            //foreach (Movie m in ListMovies)
-            //{
-            //    Console.WriteLine(m);
-            //}
-
-            //Menu.SortByActor(ListMovies);
-            //Console.WriteLine("Sorted by Actor");
-            //Console.WriteLine();
-            //Console.WriteLine();
-            //foreach (Movie m in ListMovies)
-            //{
-            //    Console.WriteLine(m);
-            //}
-
-            //Menu.AddMovie(ListMovies, AddMovieHelper());
-
-            //Console.WriteLine("After adding");
-            foreach (Movie m in ListMovies)
+            do
             {
-                Console.WriteLine(m);
+                PrintMenu();
+                MenuDisplay();
             }
-            MenuDisplay();
-
-            foreach (Movie m in ListMovies)
-            {
-                Console.WriteLine(m);
-            }
-
+            while (Continue());
 
         }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
         public static Movie AddMovieHelper()
         {
@@ -66,48 +56,88 @@ namespace MidTerm
         public static void MenuDisplay()
         {
             Console.WriteLine("Please select something to do:\n1\tAdd a movie\n2\tRemove a movie\n3\tSort\n4\tEdit a movie\nWhat would you like to select? (1-4)");
-            int input = int.Parse(Console.ReadLine());
+            bool validated = int.TryParse(Console.ReadLine(), out int input);
+            if(validated){
 
-            switch (input)
-            {
-                case 1:
-                    Menu.AddMovie(ListMovies, AddMovieHelper());
-                    break;
-                case 2:
-                    Console.Write("What is the title of the movie you would like to remove?:  ");
-                    string title = Console.ReadLine().ToLower();
-                    for (int i = 0; i < ListMovies.Count; i++)
-                    {
-                        if (ListMovies[i].MovieName.ToLower() == title)
+                switch (input)
+                {
+                    case 1:
+                        Menu.AddMovie(ListMovies, AddMovieHelper());
+                        break;
+                    case 2:
+                        Console.Write("What is the title of the movie you would like to remove?:  ");
+                        string title = Console.ReadLine().ToLower();
+                        for (int i = 0; i < ListMovies.Count; i++)
                         {
-                            Menu.RemoveMovie(ListMovies, ListMovies[i]);
+                            if (ListMovies[i].MovieName.ToLower() == title)
+                            {
+                                Menu.RemoveMovie(ListMovies, ListMovies[i]);
+                            }
                         }
-                    }
-                    break;
-                case 3:
-                    Console.WriteLine("How would you like to sort your movies?\n1\tTitle\n2\tActor/Actress\n3\tGenre\n4\tDirector\n");
-                    int input2 = int.Parse(Console.ReadLine());
-                    if (input2 == 1)
-                    {
-                        Menu.SortByName(ListMovies);
-                    }
-                    else if (input2 == 2)
-                    {
-                        Menu.SortByActor(ListMovies);
-                    }
-                    else if (input2 == 3)
-                    {
-                        Menu.SortByGenre(ListMovies);
-                    }
-                    else if (input2 == 4)
-                    {
-                        Menu.SortByDirector(ListMovies);
-                    }
-                    Console.WriteLine("Your movies have been sorted!");
-                    break;
-                case 4:
-                    //TODO:  Code a way to edit a movie based on title selection
-                    break;
+                        break;
+                    case 3:
+                        Console.WriteLine("How would you like to sort your movies?\n1\tTitle\n2\tActor/Actress\n3\tGenre\n4\tDirector\n");
+                        int input2 = int.Parse(Console.ReadLine());
+                        if (input2 == 1)
+                        {
+                            Menu.SortByName(ListMovies);
+                        }
+                        else if (input2 == 2)
+                        {
+                            Menu.SortByActor(ListMovies);
+                        }
+                        else if (input2 == 3)
+                        {
+                            Menu.SortByGenre(ListMovies);
+                        }
+                        else if (input2 == 4)
+                        {
+                            Menu.SortByDirector(ListMovies);
+                        }
+                        Console.WriteLine("Your movies have been sorted!");
+                        break;
+                    case 4:
+                        //TODO:  Code a way to edit a movie based on title selection
+                        break;
+                    default:
+                        Console.WriteLine("That was an invalid input.  Please try again.\n\n");
+                        MenuDisplay();
+                        break;
+                }
+            }
+            else
+            {
+                Console.WriteLine("That wasn't a number!\n\n");
+                MenuDisplay();
+            }
+
+        }
+
+        public static void PrintMenu()
+        {
+            foreach (Movie m in ListMovies)
+            {
+                Console.WriteLine(m);
+            }
+        }
+
+        public static bool Continue()
+        {
+            Console.Write("Continue? Y/N: ");
+            string input = Console.ReadLine().ToLower();
+            if (input == "y")
+            {
+                return true;
+            }
+            else if (input == "n")
+            {
+                return false;
+            }
+            else
+            {
+                Console.WriteLine("Invalid option.  Please try again.");
+                Continue();
+                return false;
             }
 
         }

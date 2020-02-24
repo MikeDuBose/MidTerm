@@ -52,7 +52,7 @@ namespace MidTerm
 
         public static List<Movie> SortByName(List<Movie> l)
         {
-            l.Sort((x, y) => x.Genre.CompareTo(y.Genre));
+            l.Sort((x, y) => x.MovieName.CompareTo(y.MovieName));
             return l;
         }
 

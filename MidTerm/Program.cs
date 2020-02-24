@@ -8,13 +8,17 @@ namespace MidTerm
         static List<Movie> ListMovies = new List<Movie>();
         static void Main(string[] args)
         {
-
+            //Instantiating the movie list.
+            //This could possibly be moved to the menu initialization.
+            //Would have to refactor everything?  All methods are static - how does this affect my code?
             Menu.AddMovie(ListMovies, new Movie("Avengers: End Game", "Josh Brolin", "Fantasy", "Russo Brothers"));
             Menu.AddMovie(ListMovies, new Movie("Zoolander", "Ben Stiller", "Comedy", "Also directed by Ben Stiller"));
             Menu.AddMovie(ListMovies, new Movie("Bee Movie", "Jerry Seinfeld", "Animated", "Simon J. Smith and Steve Hickner"));
             Menu.AddMovie(ListMovies, new Movie("Smash", "Applesauce", "Fantasy", "Simon J. Smith and Steve Hickner"));
             Movie z = new Movie("Zzz", "zzzz", "zzzz", "zzzzz");
             Menu.AddMovie(ListMovies, z);
+            //end of instantiation
+            //Call the program while the user would like to continue
             do
             {
                 PrintMenu();
@@ -23,7 +27,7 @@ namespace MidTerm
             while (Continue());
 
         }
-
+        //Gets some info from the user and returns a movie to add to the movie list.
         public static Movie AddMovieHelper()
         {
             Console.WriteLine("Hello! In order to add a movie, I need a few pieces of information." +
@@ -35,7 +39,7 @@ namespace MidTerm
             string genre = Console.ReadLine();
             Console.WriteLine("And last but not least, who directed this movie?:  ");
             string directed = Console.ReadLine();
-
+            //returns a movie with the specifications the user entered
             return new Movie(title, actor, genre, directed);
         }
 
@@ -92,41 +96,14 @@ namespace MidTerm
                             {
                                 if (m.MovieName.ToLower() == titSel)
                                 {
-
                                     Menu.EditMovie(m);
-                                }
-
-                                
+                                }  
                             }
                         }
                         else
                         {
                             Console.WriteLine("Invalid title name");                           
                         }
-
-
-
-
-
-
-                        //foreach (Movie m in ListMovies)
-                        //{                           
-                        //    if (m.MovieName.ToLower() == titSel)
-                        //    {
-                        //        flag = true;
-                        //        if (flag)
-                        //        {
-                        //            Menu.EditMovie(m);
-                        //        }
-                        //        else
-                        //        {
-                        //            Console.WriteLine("Invalid movie title.  Try again.");
-                        //            MenuDisplay();
-                        //        }
-                        //    }
-                        //}
-
-
                         break;
                     default:
                         Console.WriteLine("That was an invalid input.  Please try again.\n\n");

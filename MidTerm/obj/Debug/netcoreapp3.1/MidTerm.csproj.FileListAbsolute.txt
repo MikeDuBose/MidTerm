@@ -1,0 +1,11 @@
+C:\Users\mdubose\source\repos\MidTermTest\MidTerm\bin\Debug\netcoreapp3.1\MidTerm.exe
+C:\Users\mdubose\source\repos\MidTermTest\MidTerm\bin\Debug\netcoreapp3.1\MidTerm.deps.json
+C:\Users\mdubose\source\repos\MidTermTest\MidTerm\bin\Debug\netcoreapp3.1\MidTerm.runtimeconfig.json
+C:\Users\mdubose\source\repos\MidTermTest\MidTerm\bin\Debug\netcoreapp3.1\MidTerm.runtimeconfig.dev.json
+C:\Users\mdubose\source\repos\MidTermTest\MidTerm\bin\Debug\netcoreapp3.1\MidTerm.dll
+C:\Users\mdubose\source\repos\MidTermTest\MidTerm\bin\Debug\netcoreapp3.1\MidTerm.pdb
+C:\Users\mdubose\source\repos\MidTermTest\MidTerm\obj\Debug\netcoreapp3.1\MidTerm.csprojAssemblyReference.cache
+C:\Users\mdubose\source\repos\MidTermTest\MidTerm\obj\Debug\netcoreapp3.1\MidTerm.AssemblyInfoInputs.cache
+C:\Users\mdubose\source\repos\MidTermTest\MidTerm\obj\Debug\netcoreapp3.1\MidTerm.AssemblyInfo.cs
+C:\Users\mdubose\source\repos\MidTermTest\MidTerm\obj\Debug\netcoreapp3.1\MidTerm.dll
+C:\Users\mdubose\source\repos\MidTermTest\MidTerm\obj\Debug\netcoreapp3.1\MidTerm.pdb

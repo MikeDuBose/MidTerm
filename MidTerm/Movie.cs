@@ -28,7 +28,5 @@ namespace MidTerm
         {
             return $"Title: {movieName}\nActor: {mainActor}\nGenre: {genre}\nDirector: {director}\n";
         }
-
-
     }
 }

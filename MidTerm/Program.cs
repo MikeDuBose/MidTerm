@@ -11,12 +11,7 @@ namespace MidTerm
             //Instantiating the movie list.
             //This could possibly be moved to the menu initialization.
             //Would have to refactor everything?  All methods are static - how does this affect my code?
-            Menu.AddMovie(ListMovies, new Movie("Avengers: End Game", "Josh Brolin", "Fantasy", "Russo Brothers"));
-            Menu.AddMovie(ListMovies, new Movie("Zoolander", "Ben Stiller", "Comedy", "Also directed by Ben Stiller"));
-            Menu.AddMovie(ListMovies, new Movie("Bee Movie", "Jerry Seinfeld", "Animated", "Simon J. Smith and Steve Hickner"));
-            Menu.AddMovie(ListMovies, new Movie("Smash", "Applesauce", "Fantasy", "Simon J. Smith and Steve Hickner"));
-            Movie z = new Movie("Zzz", "zzzz", "zzzz", "zzzzz");
-            Menu.AddMovie(ListMovies, z);
+            InstantiateMenu();
             //end of instantiation
             //Call the program while the user would like to continue
             do
@@ -25,7 +20,6 @@ namespace MidTerm
                 MenuDisplay();
             }
             while (Continue());
-
         }
         //Gets some info from the user and returns a movie to add to the movie list.
         public static Movie AddMovieHelper()
@@ -49,7 +43,6 @@ namespace MidTerm
             bool validated = int.TryParse(Console.ReadLine(), out int input);
             if (validated)
             {
-
                 switch (input)
                 {
                     case 1:
@@ -85,7 +78,8 @@ namespace MidTerm
                         {
                             Menu.SortByDirector(ListMovies);
                         }
-                        Console.WriteLine("Your movies have been sorted!");
+                        Console.WriteLine("Your movies have been sorted!\n");
+                        PrintMenu();
                         break;
                     case 4:
                         Console.WriteLine("Please enter the title of the movie you would like to edit.");
@@ -105,18 +99,20 @@ namespace MidTerm
                             Console.WriteLine("Invalid title name");                           
                         }
                         break;
+                    case 5:
+                        //TODO: Create the search functionality and call
+                        break;
                     default:
-                        Console.WriteLine("That was an invalid input.  Please try again.\n\n");
+                        Console.WriteLine("That was an invalid input.  Please try again.\n");
                         MenuDisplay();
                         break;
                 }
             }
             else
             {
-                Console.WriteLine("That wasn't a number!\n\n");
+                Console.WriteLine("That wasn't a number!\n");
                 MenuDisplay();
             }
-
         }
 
         public static void PrintMenu()
@@ -145,7 +141,6 @@ namespace MidTerm
                 Continue();
                 return false;
             }
-
         }
 
         public static bool CheckTitle(string title)
@@ -155,7 +150,6 @@ namespace MidTerm
             {
                 arrString[i] = ListMovies[i].MovieName;
             }
-
             for (int j = 0; j < arrString.Length; j++)
             {
                 if (arrString[j].ToLower() == title.ToLower())
@@ -164,6 +158,14 @@ namespace MidTerm
                 }
             }
             return false;
+        }
+
+        public static void InstantiateMenu()
+        {
+            Menu.AddMovie(ListMovies, new Movie("Avengers: End Game", "Josh Brolin", "Fantasy", "Russo Brothers"));
+            Menu.AddMovie(ListMovies, new Movie("Zoolander", "Ben Stiller", "Comedy", "Also directed by Ben Stiller"));
+            Menu.AddMovie(ListMovies, new Movie("Bee Movie", "Jerry Seinfeld", "Animated", "Simon J. Smith and Steve Hickner"));
+            Menu.AddMovie(ListMovies, new Movie("The Cabin in the Woods", "Chris Hemsworth", "Horror", "Drew Goddard"));
         }
     }
 }

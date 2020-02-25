@@ -6,8 +6,6 @@ namespace MidTerm
 {
     public class Menu
     {
-        List<Movie> movieList = new List<Movie>();
-
         public static void AddMovie(List<Movie> l, Movie m)
         {
             l.Add(m);

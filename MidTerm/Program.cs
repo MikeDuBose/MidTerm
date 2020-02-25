@@ -50,12 +50,19 @@ namespace MidTerm
                     case 2:
                         Console.Write("What is the title of the movie you would like to remove?:  ");
                         string title = Console.ReadLine().ToLower();
-                        for (int i = 0; i < ListMovies.Count; i++)
+                        if (CheckTitle(title))
                         {
-                            if (ListMovies[i].MovieName.ToLower() == title)
+                            for (int i = 0; i < ListMovies.Count; i++)
                             {
-                                Menu.RemoveMovie(ListMovies, ListMovies[i]);
+                                if (ListMovies[i].MovieName.ToLower() == title)
+                                {
+                                    Menu.RemoveMovie(ListMovies, ListMovies[i]);
+                                }
                             }
+                        }
+                        else
+                        {
+                            Console.WriteLine("That movie does not exist.");
                         }
                         break;
                     case 3:
@@ -77,6 +84,14 @@ namespace MidTerm
                         {
                             Menu.SortByDirector(ListMovies);
                         }
+                        else
+                        {
+                            Console.WriteLine("That was not a valid input.");
+                            System.Threading.Thread.Sleep(1500);
+                            Console.Clear();
+                            PrintMenu();
+                            MenuDisplay();
+                        }
                         Console.WriteLine("Your movies have been sorted!\n");
                         PrintMenu();
                         break;
@@ -85,13 +100,16 @@ namespace MidTerm
                         string titSel = Console.ReadLine().ToLower();
                         if (CheckTitle(titSel))
                         {
-                            foreach (Movie m in ListMovies)
+
+                            for(int i = 0; i < ListMovies.Count; i++)
                             {
-                                if (m.MovieName.ToLower() == titSel)
+                                if (ListMovies[i].MovieName.ToLower() == titSel)
                                 {
-                                    Menu.EditMovie(m);
+                                    Menu.EditMovie(ListMovies[i]);
                                 }
                             }
+                            
+                            
                         }
                         else
                         {

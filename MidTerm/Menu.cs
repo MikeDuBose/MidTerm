@@ -96,13 +96,25 @@ namespace MidTerm
                     Console.Write("\nPlease enter a new director for the movie: ");
                     m.Director = Console.ReadLine();
                 }
+                else
+                {
+                    Console.WriteLine("Invalid selection.  Please try again.\n\n");
+                    System.Threading.Thread.Sleep(1500);
+                    Console.Clear();
+                    EditMovie(m);
+                }
+
+               
             }
             else
             {
                 Console.WriteLine("Invalid selection.  Please try again.\n\n");
+                System.Threading.Thread.Sleep(1500);
+                Console.Clear();
                 EditMovie(m);
             }
             Program.PrintMenu();
+            Program.MenuDisplay();
         }
     }
 }

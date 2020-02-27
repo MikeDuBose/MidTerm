@@ -103,8 +103,6 @@ namespace MidTerm
                     Console.Clear();
                     EditMovie(m);
                 }
-
-               
             }
             else
             {

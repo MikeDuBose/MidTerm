@@ -26,7 +26,10 @@ namespace MidTerm
 
         public override string ToString()
         {
-            return $"Title: {movieName}\nActor: {mainActor}\nGenre: {genre}\nDirector: {director}\n";
+            string j = String.Format("*****************************************************************************************\n" +
+                "{0,-28}Main Actor: {1,-20}Genre: {2,-10}Director: {3,-20}", movieName, mainActor, genre, director);
+            //return $"Title: {movieName}\t\tActor: {mainActor}\nGenre: {genre}\t\t\tDirector: {director}\n";
+            return j;
         }
     }
 }

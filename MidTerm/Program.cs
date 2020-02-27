@@ -3,9 +3,9 @@ using System.Collections.Generic;
 
 namespace MidTerm
 {
-    class Program
+    public class Program
     {
-        static List<Movie> ListMovies = new List<Movie>();
+        static public List<Movie> ListMovies = new List<Movie>();
         static void Main(string[] args)
         {
             InstantiateMenu();
@@ -49,16 +49,18 @@ namespace MidTerm
                         break;
                     case 2:
                         Console.Write("What is the title of the movie you would like to remove?:  ");
-                        string title = Console.ReadLine().ToLower();
-                        if (CheckTitle(title))
+                        string title = Console.ReadLine();
+                        if (CheckTitle(title.ToLower()))
                         {
                             for (int i = 0; i < ListMovies.Count; i++)
                             {
-                                if (ListMovies[i].MovieName.ToLower() == title)
+                                if (ListMovies[i].MovieName.ToLower() == title.ToLower())
                                 {
-                                    Menu.RemoveMovie(ListMovies, ListMovies[i]);
+                                    Console.WriteLine(ListMovies[i].MovieName + " has been removed.");
+                                    Menu.RemoveMovie(ListMovies, ListMovies[i]);                                    
                                 }
                             }
+                            
                         }
                         else
                         {
@@ -145,6 +147,7 @@ namespace MidTerm
             {
                 Console.WriteLine(m);
             }
+            Console.WriteLine("\n\n");
         }
 
         //Asks the user to continue
@@ -154,6 +157,7 @@ namespace MidTerm
             string input = Console.ReadLine().ToLower();
             if (input == "y")
             {
+                Console.Clear();
                 return true;
             }
             else if (input == "n")
@@ -168,19 +172,13 @@ namespace MidTerm
             }
         }
 
-        //Sends all m.MovieName from list of movies to an array
-        //Then iterates through array, checking to see if the title exists
-        //If it does, it returns true - if not, false
+        //Iterates through the list to check to see if the name is there
+        //Returns true at the first instance, else returns false
         public static bool CheckTitle(string title)
         {
-            string[] arrString = new string[ListMovies.Count];
-            for (int i = 0; i < ListMovies.Count; i++)
+            for (int k = 0; k < ListMovies.Count; k++)
             {
-                arrString[i] = ListMovies[i].MovieName;
-            }
-            for (int j = 0; j < arrString.Length; j++)
-            {
-                if (arrString[j].ToLower() == title.ToLower())
+                if (ListMovies[k].MovieName.ToLower() == title.ToLower())
                 {
                     return true;
                 }
@@ -229,6 +227,7 @@ namespace MidTerm
             Menu.AddMovie(ListMovies, new Movie("Zoolander", "Ben Stiller", "Comedy", "Ben Stiller (Director)"));
             Menu.AddMovie(ListMovies, new Movie("Bee Movie", "Jerry Seinfeld", "Animated", "Simon J. Smith and Steve Hickner"));
             Menu.AddMovie(ListMovies, new Movie("The Cabin in the Woods", "Chris Hemsworth", "Horror", "Drew Goddard"));
+            Menu.AddMovie(ListMovies, new Movie("You, Me and Dupree", "Owen Wilson", "Rom Com", "Russo Brothers"));
         }
 
         public static void FindByDirector()

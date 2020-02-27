@@ -16,6 +16,18 @@ namespace MidTerm
             }
             while (Continue());
         }
+
+
+
+
+
+
+
+
+
+
+
+
         //Gets some info from the user and returns a movie to add to the movie list.
         public static Movie AddMovieHelper()
         {
@@ -42,20 +54,24 @@ namespace MidTerm
             {
                 switch (input)
                 {
+                    //Adds a movie
                     case 1:
                         Menu.AddMovie(ListMovies, AddMovieHelper());
                         PrintMenu();
                         MenuDisplay();
                         break;
+                    //Removes a movie
                     case 2:
                         Console.Write("What is the title of the movie you would like to remove?:  ");
                         string title = Console.ReadLine();
+                        //if the title is valid
                         if (CheckTitle(title.ToLower()))
                         {
                             for (int i = 0; i < ListMovies.Count; i++)
                             {
                                 if (ListMovies[i].MovieName.ToLower() == title.ToLower())
                                 {
+                                    //tell the user about the removal first, so you can reference the movie title and then remove it
                                     Console.WriteLine(ListMovies[i].MovieName + " has been removed.");
                                     Menu.RemoveMovie(ListMovies, ListMovies[i]);                                    
                                 }
@@ -67,6 +83,7 @@ namespace MidTerm
                             Console.WriteLine("That movie does not exist.");
                         }
                         break;
+                    //Sorts movies
                     case 3:
                         Console.WriteLine("How would you like to sort your movies?\n1\tTitle\n2\tActor/Actress\n3\tGenre\n4\tDirector\n");
                         int input2 = int.Parse(Console.ReadLine());
@@ -97,6 +114,7 @@ namespace MidTerm
                         Console.WriteLine("Your movies have been sorted!\n");
                         PrintMenu();
                         break;
+                    //Edits movie
                     case 4:
                         Console.WriteLine("Please enter the title of the movie you would like to edit.");
                         string titSel = Console.ReadLine().ToLower();
@@ -118,21 +136,26 @@ namespace MidTerm
                             Console.WriteLine("Invalid title name");
                         }
                         break;
+                    //Search by director name
                     case 5:                        
                         FindByDirector();
                         break;
+                    //Searcy by actor/actress name
                     case 6:
                         FindByActor();
                         break;
+                    //Exit the program
                     case 7:
                         Environment.Exit(0);
                         break;
+                    //If the input isn't 1-7
                     default:
                         Console.WriteLine("That was an invalid input.  Please try again.\n");
                         MenuDisplay();
                         break;
                 }
             }
+            //If the input wasn't a number
             else
             {
                 Console.WriteLine("That wasn't a number!\n");
@@ -230,22 +253,26 @@ namespace MidTerm
             Menu.AddMovie(ListMovies, new Movie("You, Me and Dupree", "Owen Wilson", "Rom Com", "Russo Brothers"));
         }
 
+        //Iterates through the list of movies to find if the director matches the input
         public static void FindByDirector()
         {
             Console.Write("Please enter the director's name: ");
             string dir = Console.ReadLine().ToLower();
             if (CheckDirector(dir))
             {
+                Console.Clear();
                 for (int i = 0; i < ListMovies.Count; i++)
                 {
                     if (ListMovies[i].Director.ToLower() == dir)
                     {
+                        //If it matches, write the movie to the console.
                         Console.WriteLine(ListMovies[i]);
                     }
                 }
             }
             else
             {
+                //If the director doesn't exist
                 Console.WriteLine("That director does not exist in our records.");
             }
         }
@@ -256,6 +283,7 @@ namespace MidTerm
             string act = Console.ReadLine().ToLower();
             if (CheckActor(act))
             {
+                Console.Clear();
                 for (int i = 0; i < ListMovies.Count; i++)
                 {
                     if (ListMovies[i].MainActor.ToLower() == act)

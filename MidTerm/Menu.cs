@@ -6,66 +6,46 @@ namespace MidTerm
 {
     public class Menu
     {
+        //Adds a movie (m) to the list (l)
         public static void AddMovie(List<Movie> l, Movie m)
         {
             l.Add(m);
         }
-
+        //Removes a movie (m) from the list (l)
         public static void RemoveMovie(List<Movie> l, Movie m)
         {
             l.Remove(m);
         }
 
-        public static List<Movie> FindByActor(List<Movie> l, string actor)
-        {
-            List<Movie> MovieMatch = new List<Movie>();
-            foreach (Movie m in l)
-            {
-                if (m.MainActor.ToLower() == actor.ToLower())
-                {
-                    MovieMatch.Add(m);
-                }
-            }
-            return MovieMatch;
-        }
-
-        public static List<Movie> FindByDirector(List<Movie> l, string director)
-        {
-            List<Movie> MovieMatch = new List<Movie>();
-            foreach (Movie m in l)
-            {
-                if (m.Director.ToLower() == director.ToLower())
-                {
-                    MovieMatch.Add(m);
-                }
-            }
-            return MovieMatch;
-        }
-
+        //This sort method allows the list to be sorted in place by comparing actors
         public static List<Movie> SortByActor(List<Movie> l)
         {
             l.Sort((x, y) => x.MainActor.CompareTo(y.MainActor));
             return l;
         }
 
+        //This sort method allows the list to be sorted in place by comparing titles
         public static List<Movie> SortByName(List<Movie> l)
         {
             l.Sort((x, y) => x.MovieName.CompareTo(y.MovieName));
             return l;
         }
 
+        //This sort method allows the list to be sorted in place by comparing directors
         public static List<Movie> SortByDirector(List<Movie> l)
         {
             l.Sort((x, y) => x.Director.CompareTo(y.Director));
             return l;
         }
 
+        //This sort method allows the list to be sorted in place by comparing genre
         public static List<Movie> SortByGenre(List<Movie> l)
         {
             l.Sort((x, y) => x.Genre.CompareTo(y.Genre));
             return l;
         }
 
+        //Prompts the user to edit a movie.
         public static void EditMovie(Movie m)
         {
             Console.WriteLine("What would you like to edit? (1-4)");
@@ -111,7 +91,9 @@ namespace MidTerm
                 Console.Clear();
                 EditMovie(m);
             }
+            Console.Clear();
             Program.PrintMenu();
+            Console.WriteLine("Your movie has been edited.\n\n");
             Program.MenuDisplay();
         }
     }

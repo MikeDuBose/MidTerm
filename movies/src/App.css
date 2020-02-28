@@ -1,0 +1,33 @@
+body{
+  background-color: #9dc5c3;
+background-image: linear-gradient(315deg, #9dc5c3 0%, #5e5c5c 74%);
+}
+
+
+.App {
+  text-align: center;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+}
+img{
+  max-height : 75%;
+  max-width: 50%;
+
+}
+.movie-card{
+  width: 35%;
+  height: 40%;
+}
+
+.Text{
+  text-align:center;
+  font-family: "Times New Roman", Times, serif;
+  font-style: bold;
+  color: white;
+}
+
+
+

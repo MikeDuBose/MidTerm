@@ -120,16 +120,13 @@ namespace MidTerm
                         string titSel = Console.ReadLine().ToLower();
                         if (CheckTitle(titSel))
                         {
-
                             for(int i = 0; i < ListMovies.Count; i++)
                             {
                                 if (ListMovies[i].MovieName.ToLower() == titSel)
                                 {
                                     Menu.EditMovie(ListMovies[i]);
                                 }
-                            }
-                            
-                            
+                            }                              
                         }
                         else
                         {
